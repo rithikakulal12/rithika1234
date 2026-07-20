@@ -1,0 +1,88 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPRD35gdu/wd7lqMu3HicES",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/rithikakulal12/rithika1234/blob/main/EX8ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "import missingno as msno\n",
+        "%matplotlib inline\n",
+        "titanic_df=pd.read_csv('/content/titanic.csv',encoding='latin\\')\n",
+        "print(titanic_df)\n",
+        "print(titanic_df.info())\n",
+        "print(titanic_df.isnull())\n",
+        "titanic_df.isnull().sum()\n",
+        "df=titanic_df.dropna(axis=0)\n",
+        "df.isnull().sum()\n",
+        "df.info()\n",
+        "titanic_df.columns\n",
+        "df=titanic_df.drop(['Fare'],axis=1)\n",
+        "print(df.isnull().sum())\n",
+        "print(titanic_df['Fare'].unique())\n",
+        "titanic_df['Fare']=titanic_df['Fare'].fillna('c')\n",
+        "print(titanic_df['Fare'].isnull().sum())\n",
+        "print(titanic_df)\n",
+        "mean=titanic_df['Age'].mean()\n",
+        "print(mean)\n",
+        "titanic_df['Age']=titanic_df['Age'].fillna(mean)\n",
+        "titanic_df['Age']\n",
+        "titanic_df=pd.read_csv(\"titanic.csv\")\n",
+        "mode=titanic_df['Fare'].mode()[0]\n",
+        "print(mode)\n",
+        "titanic_df['Fare']=titanic_df['Fare'].fillna(mode)\n",
+        "titanic_df['Age']=titanic_df['Age'].fillna(titanic_df['Age'].median())\n",
+        "titanic_df['Age']\n",
+        "new_df=titanic_df.fillna(method=\"ffill\")\n",
+        "new_df\n",
+        "new_df=titanic_df.fillna(method=\"ffill\",limit=1)\n",
+        "new_df\n",
+        "new_df=titanic_df.fillna(method=\"bfill\")\n",
+        "new_df"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 106
+        },
+        "id": "7OSg6qaSDqle",
+        "outputId": "4eb6f8e2-f5fe-4034-c26d-17cd405916be"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "SyntaxError",
+          "evalue": "unterminated string literal (detected at line 4) (229335600.py, line 4)",
+          "traceback": [
+            "\u001b[0;36m  File \u001b[0;32m\"/tmp/ipykernel_1056/229335600.py\"\u001b[0;36m, line \u001b[0;32m4\u001b[0m\n\u001b[0;31m    titanic_df=pd.read_csv('/content/titanic.csv',encoding='latin\\')\u001b[0m\n\u001b[0m                                                           ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m unterminated string literal (detected at line 4)\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
